@@ -7,12 +7,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      
-      - name: Checkout code
-        uses: actions/checkout@v3
-        
-      
-      - name: Display Message
+      - uses: actions/checkout@v4
+      - name: Display message
         run: echo "Continuous integration pipeline executed Successfully"
         - name: List Files
           run: ls 
