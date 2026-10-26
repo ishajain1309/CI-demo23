@@ -12,22 +12,40 @@
 #         run: echo "Continuous integration pipeline executed Successfully"
 #         - name: List Files
 #           run: ls 
-name: CI Pipeline
+# name: CI Pipeline
+
+# on:
+#   push:
+#     branches:
+#       - main
+
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - uses: actions/checkout@v3
+
+#       - name: Display message
+#         run: echo "Continuous integration pipeline executed Successfully"
+
+#       - name: List Files
+#         run: ls
+name: CI Demo
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
-  build:
+  verify:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Display message
-        run: echo "Continuous integration pipeline executed Successfully"
-
-      - name: List Files
-        run: ls
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Confirm CI ran
+        run: |
+          echo "Continuous Integration Pipeline Executed Successfully"
+          ls -la
